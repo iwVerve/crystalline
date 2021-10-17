@@ -1,0 +1,86 @@
+@font-face {
+    font-family: Roboto;
+    src: url("Roboto-Regular.ttf");
+}
+
+:root {
+    --control-color: hsla(0, 0%, 85%, 0.9);
+    --control-highlight-color: hsla(0, 0%, 95%, 0.9);
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    background-color: hsl(0, 0%, 75%);
+    font-family: Roboto;
+    overflow: hidden;
+}
+
+canvas {
+    position: absolute;
+}
+
+.controls {
+    position: absolute;
+    display: flex;
+}
+
+.button {
+    margin: 16px;
+    padding: 0 16px;
+    height: 40px;
+
+    border-radius: 20px;
+    background-color: var(--control-color);
+    user-select: none;
+    transition: 0.1s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    background-color: var(--control-highlight-color);
+}
+
+.color-display {
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+
+    box-sizing: border-box;
+    background-color: hsl(0, 0%, 75%);
+    border: 2px solid white;
+    outline: 1px solid black;
+}
+
+.thanks-flex {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 8px);
+
+    pointer-events: none;
+}
+
+.thanks {
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.thanks em {
+    margin: 2px;
+    opacity: 0.75;
+    text-align: right;
+}
+
+.thanks em a {
+    color: black;
+}
