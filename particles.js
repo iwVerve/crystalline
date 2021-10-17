@@ -12,12 +12,20 @@ function deg2rad(deg) {
     return deg * (Math.PI / 180);
 }
 
+function rad2deg(rad) {
+    return rad * (180 / Math.PI);
+}
+
 function dcos(deg) {
     return Math.cos(deg2rad(deg));
 }
 
 function dsin(deg) {
     return Math.sin(deg2rad(deg));
+}
+
+function datan(val) {
+    return rad2deg(Math.atan(val));
 }
 
 function lerp (a, b, amount) {
@@ -36,19 +44,22 @@ class ParticleSystem {
             bottom: 608
         };
 
-        this.shape = 3;
-
-        this.count = 1;
+        this.count = 25;
         this.lifeMin = 40;
         this.lifeMax = 50;
+        this.shape = 4;
 
-        this.size = new ParticleSetting(0.5, 1, -0.01, 0);
-        this.speed = new ParticleSetting(2, 4, -0.01, 0);
-        this.direction = new ParticleSetting(0, 360, 0, 90);
-        this.orientation = new ParticleSetting(0, 360, 4, 0);
+        this.size = new ParticleSetting(0.3, 0.5, -0.01, 0);
+        this.speed = new ParticleSetting(0, 0, 0, 0);
+        this.direction = new ParticleSetting(0, 0, 0, 0);
+        this.orientation = new ParticleSetting(90, 90, 0, 0);
+
+        this.gravity = 0.6;
+        this.gravityDirection = 270;
 
         this.alphas = 3;
         this.alpha = [0, 1, 0];
+        this.additive = false;
 
         this.particles = [];
     }
@@ -112,18 +123,19 @@ class Particle {
         this.life = psys.lifeMin + Math.random() * (psys.lifeMax - psys.lifeMin);
         this.x = psys.emitter.left + Math.random() * (psys.emitter.right - psys.emitter.left);
         this.y = psys.emitter.top + Math.random() * (psys.emitter.bottom - psys.emitter.top);
+        this.shape = psys.shape;
 
         this.size = new ParticleValue(psys.size);
         this.speed = new ParticleValue(psys.speed);
         this.direction = new ParticleValue(psys.direction);
         this.orientation = new ParticleValue(psys.orientation);
 
-        this.gravity = 0;
-        this.gravityDirection = 0;
-        this.shape = psys.shape;
+        this.gravity = psys.gravity;
+        this.gravityDirection = psys.gravityDirection;
 
         this.alphas = psys.alphas;
         this.alpha = psys.alpha;
+        this.additive = psys.additive;
     }
 
     update() {
@@ -136,8 +148,14 @@ class Particle {
         this.direction.update();
         this.orientation.update();
 
-        this.x += this.speed.value * dcos(this.direction.value);
-        this.y -= this.speed.value * dsin(this.direction.value);
+        var h = this.speed.value * dcos(this.direction.value);
+        var v = -(this.speed.value * dsin(this.direction.value));
+        h += this.gravity * dcos(this.gravityDirection);
+        v -= this.gravity * dsin(this.gravityDirection);
+        this.x += h;
+        this.y += v;
+        this.speed.value = Math.sqrt(h*h + v*v);
+        this.direction.value = -rad2deg(Math.atan2(v, h));
         
         return false;
     }
@@ -145,7 +163,7 @@ class Particle {
     draw(ctx) {
         var size = this.size.value * partSize;
 
-
+        ctx.globalCompositeOperation = (this.additive) ? 'lighter' : 'source-over';
         if (this.alphas == 1) ctx.globalAlpha = this.alpha[0];
         else if (this.alphas == 2) ctx.globalAlpha = lerp(this.alpha[0], this.alpha[1], this.time/this.life);
         else if (this.alphas == 3) {
@@ -161,5 +179,6 @@ class Particle {
         ctx.rotate(deg2rad(-this.orientation.value));
         ctx.translate(-this.x, -this.y);
         ctx.globalAlpha = 1;
+        ctx.globalCompositeOperation = 'lighter';
     }
 }
