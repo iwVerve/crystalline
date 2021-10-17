@@ -19,6 +19,11 @@ for (var i = 1; i <= 3; i++) {
     });
 }
 
+$ ('#count')[0].value = psys.count;
+$ ('#left')[0].value = psys.emitter.left;
+$ ('#right')[0].value = psys.emitter.right;
+$ ('#top')[0].value = psys.emitter.top;
+$ ('#bottom')[0].value = psys.emitter.bottom;
 $ ('#life-min')[0].value = psys.lifeMin;
 $ ('#life-max')[0].value = psys.lifeMax;
 $ ('#alpha1')[0].value = psys.alpha[0];
@@ -30,6 +35,18 @@ $ ('#size-min')[0].value = psys.size.min;
 $ ('#size-max')[0].value = psys.size.max;
 $ ('#size-incr')[0].value = psys.size.incr;
 $ ('#size-wiggle')[0].value = psys.size.wiggle;
+$ ('#speed-min')[0].value = psys.speed.min;
+$ ('#speed-max')[0].value = psys.speed.max;
+$ ('#speed-incr')[0].value = psys.speed.incr;
+$ ('#speed-wiggle')[0].value = psys.speed.wiggle;
+$ ('#direction-min')[0].value = psys.direction.min;
+$ ('#direction-max')[0].value = psys.direction.max;
+$ ('#direction-incr')[0].value = psys.direction.incr;
+$ ('#direction-wiggle')[0].value = psys.direction.wiggle;
+$ ('#orientation-min')[0].value = psys.orientation.min;
+$ ('#orientation-max')[0].value = psys.orientation.max;
+$ ('#orientation-incr')[0].value = psys.orientation.incr;
+$ ('#orientation-wiggle')[0].value = psys.orientation.wiggle;
 
 function setColors(n) {
     psys.colors = n;

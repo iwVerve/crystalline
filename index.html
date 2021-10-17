@@ -17,6 +17,26 @@
                 <input type="container" id="bg-color-picker" hidden>
             </label>
 
+            <!--Count & Position-->
+            <div>
+                <div class="container">
+                    Emitter Count
+                    <input class="value" type="text" id="count" onclick="this.select();" oninput="psys.count = Math.floor(Number(this.value));" onfocusout="this.value = Math.floor(Number(this.value));">
+                </div>
+                <div class="container">
+                    X Min.
+                    <input class="value" type="text" id="left" onclick="this.select();" oninput="psys.emitter.left = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    X Max.
+                    <input class="value" type="text" id="right" onclick="this.select();" oninput="psys.emitter.right = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+                <div class="container">
+                    Y Min.
+                    <input class="value" type="text" id="top" onclick="this.select();" oninput="psys.emitter.top = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    Y Max.
+                    <input class="value" type="text" id="bottom" onclick="this.select();" oninput="psys.emitter.bottom = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+            </div>
+
             <!--Particle lifetime-->
             <div>
                 <div class="container">
@@ -98,15 +118,53 @@
 
             <!--Smart properties-->
             <div>
-                <div class="container">
+                <div class="container column">
                     Size
-                    <input class="value" type="text" id="size-min" onclick="this.select();" oninput="psys.size.min = Number(this.value);" onfocusout="this.value = Number(this.value);">
-                    -
-                    <input class="value" type="text" id="size-max" onclick="this.select();" oninput="psys.size.max = Number(this.value);" onfocusout="this.value = Number(this.value);">
-                    +
-                    <input class="value" type="text" id="size-incr" onclick="this.select();" oninput="psys.size.incr = Number(this.value);" onfocusout="this.value = Number(this.value);">
-                    ~
-                    <input class="value" type="text" id="size-wiggle" onclick="this.select();" oninput="psys.size.wiggle = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    <div class="flex">
+                        <input class="value" type="text" id="size-min" onclick="this.select();" oninput="psys.size.min = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        -
+                        <input class="value" type="text" id="size-max" onclick="this.select();" oninput="psys.size.max = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        +
+                        <input class="value" type="text" id="size-incr" onclick="this.select();" oninput="psys.size.incr = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        ~
+                        <input class="value" type="text" id="size-wiggle" onclick="this.select();" oninput="psys.size.wiggle = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    </div>
+                </div>
+                <div class="container column">
+                    Speed
+                    <div class="flex">
+                        <input class="value" type="text" id="speed-min" onclick="this.select();" oninput="psys.speed.min = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        -
+                        <input class="value" type="text" id="speed-max" onclick="this.select();" oninput="psys.speed.max = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        +
+                        <input class="value" type="text" id="speed-incr" onclick="this.select();" oninput="psys.speed.incr = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        ~
+                        <input class="value" type="text" id="speed-wiggle" onclick="this.select();" oninput="psys.speed.wiggle = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    </div>
+                </div>
+                <div class="container column">
+                    Direction
+                    <div class="flex">
+                        <input class="value" type="text" id="direction-min" onclick="this.select();" oninput="psys.direction.min = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        -
+                        <input class="value" type="text" id="direction-max" onclick="this.select();" oninput="psys.direction.max = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        +
+                        <input class="value" type="text" id="direction-incr" onclick="this.select();" oninput="psys.direction.incr = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        ~
+                        <input class="value" type="text" id="direction-wiggle" onclick="this.select();" oninput="psys.direction.wiggle = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    </div>
+                </div>
+                <div class="container column">
+                    Orientation
+                    <div class="flex">
+                        <input class="value" type="text" id="orientation-min" onclick="this.select();" oninput="psys.orientation.min = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        -
+                        <input class="value" type="text" id="orientation-max" onclick="this.select();" oninput="psys.orientation.max = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        +
+                        <input class="value" type="text" id="orientation-incr" onclick="this.select();" oninput="psys.orientation.incr = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                        ~
+                        <input class="value" type="text" id="orientation-wiggle" onclick="this.select();" oninput="psys.orientation.wiggle = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    </div>
                 </div>
             </div>
 

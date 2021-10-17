@@ -78,7 +78,7 @@ class ParticleSystem {
             bottom: 608
         };
 
-        this.count = -5;
+        this.count = 1;
         this.lifeMin = 100;
         this.lifeMax = 100;
         this.shape = 2;
@@ -86,7 +86,7 @@ class ParticleSystem {
         this.size = new ParticleSetting(1, 1, 0, 0);
         this.speed = new ParticleSetting(0, 0, 0, 0);
         this.direction = new ParticleSetting(0, 0, 0, 0);
-        this.orientation = new ParticleSetting(90, 90, 0, 0);
+        this.orientation = new ParticleSetting(0, 0, 0, 0);
 
         this.gravity = 0;
         this.gravityDirection = 270;

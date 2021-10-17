@@ -41,7 +41,7 @@ body {
 .container {
     margin: 16px;
     padding: 0 16px;
-    height: 40px;
+    min-height: 40px;
 
     border-radius: 20px;
     background-color: var(--control-color);
@@ -53,8 +53,19 @@ body {
     justify-content: center;
 }
 
+.container.column {
+    padding: 4px 16px;
+    flex-flow: column;
+}
+
 .container.button:hover {
     background-color: var(--control-highlight-color);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .color-display {
