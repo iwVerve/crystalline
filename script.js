@@ -24,11 +24,27 @@ $ ('#life-max')[0].value = psys.lifeMax;
 $ ('#alpha1')[0].value = psys.alpha[0];
 $ ('#alpha2')[0].value = psys.alpha[1];
 $ ('#alpha3')[0].value = psys.alpha[2];
+$ ('#gravity')[0].value = psys.gravity;
+$ ('#gravity-direction')[0].value = psys.gravityDirection;
+$ ('#size-min')[0].value = psys.size.min;
+$ ('#size-max')[0].value = psys.size.max;
+$ ('#size-incr')[0].value = psys.size.incr;
+$ ('#size-wiggle')[0].value = psys.size.wiggle;
 
 function setColors(n) {
     psys.colors = n;
     $ ('.colors .option.active')[0].classList.remove('active');
     $ (`[name="${n} colors"]`)[0].classList.add('active');
+}
+
+function switchBlending() {
+    if (psys.additive) {
+        $ ('#additive')[0].classList.remove('active');
+    }
+    else {
+        $ ('#additive')[0].classList.add('active');
+    }
+    psys.additive = !psys.additive;
 }
 
 function setAlphas(n) {

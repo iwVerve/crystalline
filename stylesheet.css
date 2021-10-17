@@ -108,7 +108,38 @@ body {
     border: none;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 18px;
+    font-size: 14px;
+}
+
+.switch {
+    width: 32px;
+    height: 24px;
+    margin: 4px;
+
+    border-radius: 12px;
+    background-color: #ff1f1f;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.switch .knob {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin: 4px;
+    left: 0;
+
+    border-radius: 8px;
+    background-color: var(--control-color);
+    transition: 0.2s;
+}
+
+.switch.active {
+    background-color: #1fbf1f;
+}
+
+.switch.active .knob {
+    left: 8px;
 }
 
 

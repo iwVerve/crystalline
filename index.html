@@ -54,6 +54,10 @@
                     <span class="color-display" id="color3-display"></span>
                     <input type="container" id="color3-picker" hidden>
                 </label>
+                <div class="container">
+                    Additive blending
+                    <div class="switch" id="additive" onclick="switchBlending()"><div class="knob"></div></div>
+                </div>
             </div>
 
             <!--Particle alphas-->
@@ -79,6 +83,33 @@
                     <input class="value" type="text" id="alpha3" onclick="this.select();" oninput="psys.alpha[2] = Number(this.value);" onfocusout="this.value = Number(this.value);">
                 </div>
             </div>
+
+            <!--Particle gravity-->
+            <div>
+                <div class="container">
+                    Gravity
+                    <input class="value" type="text" id="gravity" onclick="this.select();" oninput="psys.gravity = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+                <div class="container">
+                    Gravity direction
+                    <input class="value" type="text" id="gravity-direction" onclick="this.select();" oninput="psys.gravityDirection = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+            </div>
+
+            <!--Smart properties-->
+            <div>
+                <div class="container">
+                    Size
+                    <input class="value" type="text" id="size-min" onclick="this.select();" oninput="psys.size.min = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    -
+                    <input class="value" type="text" id="size-max" onclick="this.select();" oninput="psys.size.max = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    +
+                    <input class="value" type="text" id="size-incr" onclick="this.select();" oninput="psys.size.incr = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    ~
+                    <input class="value" type="text" id="size-wiggle" onclick="this.select();" oninput="psys.size.wiggle = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+            </div>
+
         </div>
         <div class="thanks">
             <em>
