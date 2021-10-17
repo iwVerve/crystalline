@@ -6,6 +6,12 @@
 :root {
     --control-color: hsla(0, 0%, 85%, 0.9);
     --control-highlight-color: hsla(0, 0%, 95%, 0.9);
+
+    --radial-color: hsla(0, 0%, 75%, 0.9);
+    --radial-pressed-color: hsla(0, 0%, 65%, 0.9);
+    --radial-pressed-shadow-color: hsla(0, 0%, 55%, 0.9);
+    --radial-hover-color: hsla(0, 0%, 60%, 0.9);
+    --radial-hover-shadow-color: hsla(0, 0%, 50%, 0.9);
 }
 
 body {
@@ -22,12 +28,17 @@ body {
     position: absolute;
 }
 
+
+
 .controls {
     position: absolute;
+    height: 100%;
+
     display: flex;
+    flex-flow: column wrap;
 }
 
-.button {
+.container {
     margin: 16px;
     padding: 0 16px;
     height: 40px;
@@ -42,7 +53,7 @@ body {
     justify-content: center;
 }
 
-.button:hover {
+.container.button:hover {
     background-color: var(--control-highlight-color);
 }
 
@@ -57,6 +68,50 @@ body {
     border: 2px solid white;
     outline: 1px solid black;
 }
+
+.radial {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.radial .option {
+    width: 24px;
+    height: 24px;
+    margin: 4px;
+
+    border-radius: 12px;
+    background-color: var(--radial-color);
+    transition: 0.1s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radial .option.active {
+    background-color: var(--radial-pressed-color);
+    box-shadow: 0 3px var(--radial-pressed-shadow-color) inset;
+}
+
+.radial .option:hover {
+    background-color: var(--radial-hover-color);
+    box-shadow: 0 3px var(--radial-hover-shadow-color) inset;
+}
+
+.value {
+    width: 36px;
+    height: 24px;
+    margin: 4px;
+
+    border-radius: 12px;
+    border: none;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
+
 
 .thanks-flex {
     position: absolute;
@@ -83,8 +138,4 @@ body {
 
 .thanks em a {
     color: black;
-}
-
-.test {
-    filter: brightness(0.25);
 }

@@ -9,11 +9,76 @@
     <body>
         <canvas id="particle-canvas"></canvas>
         <div class="controls">
-            <label class="button">
+
+            <!--Background color-->
+            <label class="container button">
                 Background color
                 <span class="color-display" id="bg-color-display"></span>
-                <input type="button" id="bg-color-picker" hidden>
+                <input type="container" id="bg-color-picker" hidden>
             </label>
+
+            <!--Particle lifetime-->
+            <div>
+                <div class="container">
+                    Life Min
+                    <input class="value" type="text" id="life-min" onclick="this.select();" oninput="psys.lifeMin = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+                <div class="container">
+                    Life Max
+                    <input class="value" type="text" id="life-max" onclick="this.select();" oninput="psys.lifeMax = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+            </div>
+
+            <!--Particle colors-->
+            <div>
+                <div class="container">
+                    Colors
+                    <div class="radial colors">
+                        <div class="option active" name="1 colors" onClick="setColors(1)">1</div>
+                        <div class="option" name="2 colors" onClick="setColors(2)">2</div>
+                        <div class="option" name="3 colors" onClick="setColors(3)">3</div>
+                    </div>
+                </div>
+                <label class="container button">
+                    Color 1
+                    <span class="color-display" id="color1-display"></span>
+                    <input type="container" id="color1-picker" hidden>
+                </label>
+                <label class="container button">
+                    Color 2
+                    <span class="color-display" id="color2-display"></span>
+                    <input type="container" id="color2-picker" hidden>
+                </label>
+                <label class="container button">
+                    Color 3
+                    <span class="color-display" id="color3-display"></span>
+                    <input type="container" id="color3-picker" hidden>
+                </label>
+            </div>
+
+            <!--Particle alphas-->
+            <div>
+                <div class="container">
+                    Alphas
+                    <div class="radial alphas">
+                        <div class="option" name="1 alphas" onClick="setAlphas(1)">1</div>
+                        <div class="option" name="2 alphas" onClick="setAlphas(2)">2</div>
+                        <div class="option active" name="3 alphas" onClick="setAlphas(3)">3</div>
+                    </div>
+                </div>
+                <div class="container">
+                    Alpha 1
+                    <input class="value" type="text" id="alpha1" onclick="this.select();" oninput="psys.alpha[0] = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+                <div class="container">
+                    Alpha 2
+                    <input class="value" type="text" id="alpha2" onclick="this.select();" oninput="psys.alpha[1] = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+                <div class="container">
+                    Alpha 3
+                    <input class="value" type="text" id="alpha3" onclick="this.select();" oninput="psys.alpha[2] = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+            </div>
         </div>
         <div class="thanks">
             <em>

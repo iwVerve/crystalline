@@ -39,7 +39,7 @@ class Color {
             this.b = 255;
         }
         else if (arguments.length == 1) {
-            rgb = arguments[0].replace(/[^\d,]/g, '').split(',');
+            var rgb = arguments[0].replace(/[^\d,]/g, '').split(',');
             this.r = rgb[0];
             this.g = rgb[1];
             this.b = rgb[2];           
@@ -91,11 +91,11 @@ class ParticleSystem {
         this.gravity = 0;
         this.gravityDirection = 270;
 
-        this.alphas = 1;
-        this.alpha = [1, 1, 0];
+        this.alphas = 3;
+        this.alpha = [0, 1, 0];
         this.additive = false;
 
-        this.colors = 3;
+        this.colors = 1;
         this.color = [new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255)];
 
         this.particles = [];
@@ -187,6 +187,7 @@ class Particle {
         this.direction.update();
         this.orientation.update();
 
+        //Move and add gravity
         var h = this.speed.value * dcos(this.direction.value);
         var v = -(this.speed.value * dsin(this.direction.value));
         h += psys.gravity * dcos(psys.gravityDirection);
