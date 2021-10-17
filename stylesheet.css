@@ -78,6 +78,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.1s;
+}
+
+.arrow:hover {
+    background-color: var(--radial-hover-color);
+    box-shadow: 0 3px var(--radial-hover-shadow-color) inset;
 }
 
 #shape-name {
