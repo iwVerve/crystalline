@@ -31,6 +31,35 @@ function lerp (a, b, amount) {
     return (1 - amount) * a + amount * b;
 }
 
+class Color {
+    constructor() {
+        if (arguments.length == 0) {
+            this.r = 255;
+            this.g = 255;
+            this.b = 255;
+        }
+        else if (arguments.length == 1) {
+            rgb = arguments[0].replace(/[^\d,]/g, '').split(',');
+            this.r = rgb[0];
+            this.g = rgb[1];
+            this.b = rgb[2];           
+        }
+        else if (arguments.length == 3) {
+            this.r = arguments[0];
+            this.g = arguments[1];
+            this.b = arguments[2];
+        }
+    }
+
+    static lerp(c1, c2, val) {
+        return new Color(lerp(c1.r, c2.r, val), lerp(c1.g, c2.g, val), lerp(c1.b, c2.b, val));
+    }
+
+    toString() {
+        return `rgb(${this.r}, ${this.g}, ${this.b})`;
+    }
+}
+
 class ParticleSystem {
     constructor() {
         this.fps = 50;
@@ -49,22 +78,25 @@ class ParticleSystem {
             bottom: 608
         };
 
-        this.count = 25;
-        this.lifeMin = 40;
-        this.lifeMax = 50;
-        this.shape = 4;
+        this.count = -5;
+        this.lifeMin = 100;
+        this.lifeMax = 100;
+        this.shape = 2;
 
-        this.size = new ParticleSetting(0.3, 0.5, -0.01, 0);
+        this.size = new ParticleSetting(1, 1, 0, 0);
         this.speed = new ParticleSetting(0, 0, 0, 0);
         this.direction = new ParticleSetting(0, 0, 0, 0);
         this.orientation = new ParticleSetting(90, 90, 0, 0);
 
-        this.gravity = 0.6;
+        this.gravity = 0;
         this.gravityDirection = 270;
 
-        this.alphas = 3;
-        this.alpha = [0, 1, 0];
+        this.alphas = 1;
+        this.alpha = [1, 1, 0];
         this.additive = false;
+
+        this.colors = 3;
+        this.color = [new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255)];
 
         this.particles = [];
     }
@@ -142,7 +174,7 @@ class Particle {
         this.direction = new ParticleValue(psys.direction);
         this.orientation = new ParticleValue(psys.orientation);
 
-        this.drawColor = `rgb(${255 * Math.random()}, ${255 * Math.random()}, ${255 * Math.random()})`;
+        this.drawColor = new Color();
     }
 
     update() {
@@ -169,21 +201,33 @@ class Particle {
 
     draw(ctx) {
         var size = this.size.value * psys.partSize;
+
+        //Set draw color
+        if (this.psys.colors == 1) this.drawColor = this.psys.color[0];
+        else if (this.psys.colors == 2) this.drawColor = Color.lerp(this.psys.color[0], this.psys.color[1], this.time/this.life);
+        else if (this.psys.colors == 3) {
+            var f = this.time/this.life;
+            if (f <= 0.5) this.drawColor = Color.lerp(this.psys.color[0], this.psys.color[1], 2*f);
+            else this.drawColor = Color.lerp(this.psys.color[1], this.psys.color[2], 2*f-1);
+        }
         
-        this.psys.tCtx.fillStyle = this.drawColor;
+        //Draw colored particle on temporary canvas
+        this.psys.tCtx.fillStyle = this.drawColor.toString();
         this.psys.tCtx.fillRect(0, 0, this.psys.tCanvas.width, this.psys.tCanvas.height);
         this.psys.tCtx.globalCompositeOperation = 'destination-in';
         this.psys.tCtx.drawImage(particleShape[psys.shape], 0, 0);
         this.psys.tCtx.globalCompositeOperation = 'source-over';
 
-        ctx.globalCompositeOperation = (psys.additive) ? 'lighter' : 'source-over';
-        if (psys.alphas == 1) ctx.globalAlpha = psys.alpha[0];
-        else if (psys.alphas == 2) ctx.globalAlpha = lerp(psys.alpha[0], psys.alpha[1], this.time/this.life);
-        else if (psys.alphas == 3) {
+        //Set blend mode and alpha
+        ctx.globalCompositeOperation = (this.psys.additive) ? 'lighter' : 'source-over';
+        if (this.psys.alphas == 1) ctx.globalAlpha = this.psys.alpha[0];
+        else if (this.psys.alphas == 2) ctx.globalAlpha = lerp(this.psys.alpha[0], this.psys.alpha[1], this.time/this.life);
+        else if (this.psys.alphas == 3) {
             var f = this.time/this.life;
-            if (f <= 0.5) ctx.globalAlpha = lerp(psys.alpha[0], psys.alpha[1], 2*f);
-            else ctx.globalAlpha = lerp(psys.alpha[1], psys.alpha[2], 2*f-1);
+            if (f <= 0.5) ctx.globalAlpha = lerp(this.psys.alpha[0], this.psys.alpha[1], 2*f);
+            else ctx.globalAlpha = lerp(this.psys.alpha[1], this.psys.alpha[2], 2*f-1);
         }
+
         ctx.translate(this.x, this.y);
         ctx.rotate(deg2rad(this.orientation.value));
 

@@ -6,7 +6,8 @@ bgColor = 'hsl(0, 0%, 75%)';
 const bgPickerButton = $ ('#bg-color-picker')[0];
 const bgPicker = new ColorPicker(bgPickerButton, bgColor);
 bgPickerButton.addEventListener('colorChange', function(event) {
-    bgColor = event.detail.color.hsl;
+    bgColor = event.detail.color.rgb;
+    console.log(bgColor);
 })
 
 psys = new ParticleSystem();
