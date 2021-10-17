@@ -47,6 +47,7 @@ $ ('#orientation-min')[0].value = psys.orientation.min;
 $ ('#orientation-max')[0].value = psys.orientation.max;
 $ ('#orientation-incr')[0].value = psys.orientation.incr;
 $ ('#orientation-wiggle')[0].value = psys.orientation.wiggle;
+$ ('#fps')[0].value = psys.fps;
 
 function updateShape() {
     var name = "";
