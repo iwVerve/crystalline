@@ -1,4 +1,4 @@
-const canvas = document.getElementsByTagName('canvas')[0];
+const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
 
 bgColor = 'hsl(0, 0%, 75%)';

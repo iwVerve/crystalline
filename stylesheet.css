@@ -18,7 +18,7 @@ body {
     overflow: hidden;
 }
 
-canvas {
+#particle-canvas {
     position: absolute;
 }
 
@@ -83,4 +83,8 @@ canvas {
 
 .thanks em a {
     color: black;
+}
+
+.test {
+    filter: brightness(0.25);
 }
