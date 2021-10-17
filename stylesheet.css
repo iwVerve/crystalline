@@ -73,6 +73,7 @@ body {
     height: 24px;
     margin: 4px;
 
+    cursor: pointer;
     border-radius: 12px;
     background-color: var(--radial-color);
     display: flex;
