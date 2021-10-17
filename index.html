@@ -17,7 +17,7 @@
                 <input type="container" id="bg-color-picker" hidden>
             </label>
 
-            <!--Count & Position-->
+            <!--Count, position, shape-->
             <div>
                 <div class="container">
                     Emitter Count
@@ -113,6 +113,15 @@
                 <div class="container">
                     Gravity direction
                     <input class="value" type="text" id="gravity-direction" onclick="this.select();" oninput="psys.gravityDirection = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+            </div>
+
+            <div>
+                <div class="container">
+                    Shape:
+                    <div class="arrow" onclick="psys.shape = (psys.shape + 12) % 14 + 1; updateShape();"> &lt; </div>
+                    <span id="shape-name"></span>
+                    <div class="arrow" onclick="psys.shape = psys.shape % 14 + 1; updateShape();"> &gt; </div>
                 </div>
             </div>
 

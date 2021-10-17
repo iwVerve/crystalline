@@ -48,6 +48,27 @@ $ ('#orientation-max')[0].value = psys.orientation.max;
 $ ('#orientation-incr')[0].value = psys.orientation.incr;
 $ ('#orientation-wiggle')[0].value = psys.orientation.wiggle;
 
+function updateShape() {
+    var name = "";
+    switch (psys.shape) {
+        case 1: name = "Pixel"; break;
+        case 2: name = "Disk"; break;
+        case 3: name = "Square"; break;
+        case 4: name = "Line"; break;
+        case 5: name = "Star"; break;
+        case 6: name = "Circle"; break;
+        case 7: name = "Ring"; break;
+        case 8: name = "Sphere"; break;
+        case 9: name = "Flare"; break;
+        case 10: name = "Spark"; break;
+        case 11: name = "Explosion"; break;
+        case 12: name = "Cloud"; break;
+        case 13: name = "Smoke"; break;
+        case 14: name = "Snow"; break;
+    }
+    $ ('#shape-name')[0].innerHTML = name;
+}
+
 function setColors(n) {
     psys.colors = n;
     $ ('.colors .option.active')[0].classList.remove('active');
@@ -101,3 +122,4 @@ function draw() {
 
 update();
 setInterval(update, 10);
+updateShape();
