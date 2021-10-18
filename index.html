@@ -22,6 +22,7 @@
                 <div class="container">
                     Emitter Count
                     <input class="value" type="text" id="count" onclick="this.select();" oninput="psys.count = Math.floor(Number(this.value));" onfocusout="this.value = Math.floor(Number(this.value));">
+                    <span class="tooltip" title="How many particles per frame. Negative numbers spawn based on chance, e.g. -4 => 25% chance per frame">(?)</span>
                 </div>
                 <div class="container">
                     X Min.
