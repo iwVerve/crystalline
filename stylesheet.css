@@ -177,6 +177,11 @@ body {
     left: 8px;
 }
 
+.tooltip {
+    opacity: 0.5;
+    text-decoration: underline;
+}
+
 
 
 .thanks-flex {

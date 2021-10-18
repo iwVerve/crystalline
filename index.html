@@ -128,7 +128,10 @@
             <!--Smart properties-->
             <div>
                 <div class="container column">
-                    Size
+                    <div>
+                        Size
+                        <span class="tooltip" title="[Min. start value] - [Max. start value] + [Increment per frame] ~ [Wiggle]">(?)</span>
+                    </div>
                     <div class="flex">
                         <input class="value" type="text" id="size-min" onclick="this.select();" oninput="psys.size.min = Number(this.value);" onfocusout="this.value = Number(this.value);">
                         -
@@ -179,8 +182,16 @@
             
             <div>
                 <div class="container">
-                    Framerate:
+                    Framerate
                     <input class="value" type="text" id="fps" onclick="this.select();" oninput="psys.fps = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+            </div>
+
+            <div>
+                <div class="container">
+                    Burst particles
+                    <input class="value" type="text" id="burst-particles" onclick="this.select();" oninput="psys.burstParticles = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    <span class="tooltip" title="Space bar to burst particles from the cursor.">(?)</span>
                 </div>
             </div>
 

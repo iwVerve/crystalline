@@ -102,6 +102,8 @@ class ParticleSystem {
         this.colors = 1;
         this.color = [new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255)];
 
+        this.burstParticles = 10;
+
         this.particles = [];
     }
 
@@ -110,7 +112,7 @@ class ParticleSystem {
         this.lifeMax = (3 * Math.random() + 1) * this.lifeMin;
         this.shape = 1 + Math.floor(14 * Math.random());
         var r = Math.random()/2;
-        this.size = new ParticleSetting(r, (1 + Math.random()) * r, (Math.random()-0.5)/100, 0);
+        this.size = new ParticleSetting(r, (1 + Math.random()) * r + Math.random()/2, (Math.random()-0.5)/100, 0);
         r = Math.random()/2;
         this.speed = new ParticleSetting(r, (1 + Math.random()) * r, (Math.random()-0.5)/100, 0);
         r = 360 * Math.random();
@@ -127,7 +129,15 @@ class ParticleSystem {
         }
         this.additive = (Math.random()>0.5);
     }
-    
+
+    burst(x, y) {
+        for (var i = 0; i < this.burstParticles; i++) {
+            var p = new Particle(this);
+            p.x = x;
+            p.y = y;
+            this.particles.push(p);
+        }
+    }
 
     update() {
         while (Date.now() - this.lastFrame > 1000/this.fps) {

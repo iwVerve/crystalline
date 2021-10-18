@@ -10,6 +10,12 @@ const ctx = canvas.getContext('2d');
 
 bgColor = 'hsl(0, 0%, 75%)';
 
+mouse = {x: 0, y: 0};
+document.onmousemove = function(event) {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+}
+
 var btn = $ ('#bg-color-picker')[0];
 var picker = new ColorPicker(btn, bgColor);
 btn.addEventListener('colorChange', function(event) {
@@ -53,6 +59,13 @@ $ ('#orientation-max')[0].value = psys.orientation.max;
 $ ('#orientation-incr')[0].value = psys.orientation.incr;
 $ ('#orientation-wiggle')[0].value = psys.orientation.wiggle;
 $ ('#fps')[0].value = psys.fps;
+$ ('#burst-particles')[0].value = psys.burstParticles;
+
+document.addEventListener('keydown', function(event) {
+    if (event.key == ' ') {
+        psys.burst(mouse.x - (canvas.width/2 - 400), mouse.y - (canvas.height/2 - 304));
+    }
+});
 
 function updateShape() {
     var name = "";
