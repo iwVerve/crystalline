@@ -183,6 +183,12 @@ body {
 }
 
 
+.export {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+
 
 .thanks-flex {
     position: absolute;
@@ -205,6 +211,7 @@ body {
     margin: 2px;
     opacity: 0.75;
     text-align: right;
+    text-shadow: 1px 1px 3px #ffffff7f;
 }
 
 .thanks em a {
