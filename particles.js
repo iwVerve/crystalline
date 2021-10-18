@@ -55,6 +55,10 @@ class Color {
         return new Color(lerp(c1.r, c2.r, val), lerp(c1.g, c2.g, val), lerp(c1.b, c2.b, val));
     }
 
+    static random() {
+        return new Color(255 * Math.random(), 255 * Math.random(), 255 * Math.random());
+    }
+
     toString() {
         return `rgb(${this.r}, ${this.g}, ${this.b})`;
     }
@@ -79,8 +83,8 @@ class ParticleSystem {
         };
 
         this.count = 1;
-        this.lifeMin = 100;
-        this.lifeMax = 100;
+        this.lifeMin = 40;
+        this.lifeMax = 50;
         this.shape = 2;
 
         this.size = new ParticleSetting(1, 1, 0, 0);
@@ -100,6 +104,30 @@ class ParticleSystem {
 
         this.particles = [];
     }
+
+    randomize() {
+        this.lifeMin = 50 * Math.random();
+        this.lifeMax = (3 * Math.random() + 1) * this.lifeMin;
+        this.shape = 1 + Math.floor(14 * Math.random());
+        var r = Math.random()/2;
+        this.size = new ParticleSetting(r, (1 + Math.random()) * r, (Math.random()-0.5)/100, 0);
+        r = Math.random()/2;
+        this.speed = new ParticleSetting(r, (1 + Math.random()) * r, (Math.random()-0.5)/100, 0);
+        r = 360 * Math.random();
+        this.direction = new ParticleSetting(r, r + 360 * Math.random(), (Math.random()-0.5)*4, 0);
+        r = 360 * Math.random();
+        this.orientation = new ParticleSetting(r, r + 360 * Math.random(), (Math.random()-0.5)*4, 0);
+        this.alphas = Math.floor(3 * Math.random()) + 1;
+        for(var i = 0; i < 3; i++) {
+            psys.alpha[i] = Math.random();
+        }
+        this.colors = Math.floor(3 * Math.random()) + 1;
+        for(var i = 0; i < 3; i++) {
+            psys.color[i] = Color.random();
+        }
+        this.additive = (Math.random()>0.5);
+    }
+    
 
     update() {
         while (Date.now() - this.lastFrame > 1000/this.fps) {

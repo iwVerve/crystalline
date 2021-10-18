@@ -1,4 +1,9 @@
 psys = new ParticleSystem();
+psys.randomize();
+setAlphas(psys.alphas);
+setColors(psys.colors);
+switchBlending();
+switchBlending();
 
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
