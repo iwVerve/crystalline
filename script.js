@@ -1,9 +1,5 @@
 psys = new ParticleSystem();
 psys.randomize();
-setAlphas(psys.alphas);
-setColors(psys.colors);
-switchBlending();
-switchBlending();
 
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
@@ -111,18 +107,25 @@ function setAlphas(n) {
 }
 
 function update() {
-    updateUI();
+    updateUI(false);
 
     canvas.width = document.body.clientWidth;
     canvas.height = document.body.clientHeight;
     draw();
 }
 
-function updateUI() {
+function updateUI(full) {
     $ ("#bg-color-display")[0].style["background-color"] = bgColor;
     $ ("#color1-display")[0].style["background-color"] = psys.color[0];
     $ ("#color2-display")[0].style["background-color"] = psys.color[1];
     $ ("#color3-display")[0].style["background-color"] = psys.color[2];
+
+    if (full) {
+        setAlphas(psys.alphas);
+        setColors(psys.colors);
+        switchBlending();
+        switchBlending();
+    }
 }
 
 function draw() {
@@ -142,3 +145,4 @@ function draw() {
 update();
 setInterval(update, 10);
 updateShape();
+updateUI(true);

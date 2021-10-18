@@ -58,6 +58,10 @@ body {
     flex-flow: column;
 }
 
+.container.button {
+    cursor: pointer;
+}
+
 .container.button:hover {
     background-color: var(--control-highlight-color);
 }
