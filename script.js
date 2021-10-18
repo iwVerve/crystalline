@@ -94,6 +94,7 @@ function updateUI(full) {
         setColors(psys.colors);
         switchBlending();
         switchBlending();
+        updateShape();
 
         $ ('#count')[0].value = psys.count;
         $ ('#left')[0].value = psys.emitter.left;
@@ -147,5 +148,4 @@ function draw() {
 
 update();
 setInterval(update, 10);
-updateShape();
 updateUI(true);
