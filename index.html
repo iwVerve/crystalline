@@ -183,7 +183,7 @@
             <div>
                 <div class="container">
                     Burst particles
-                    <input class="value" type="text" id="burst-particles" onclick="this.select();" oninput="psys.burstParticles = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                    <input class="value" type="text" id="burst-particles" onclick="this.select();" oninput="psys.burstCount = Number(this.value);" onfocusout="this.value = Number(this.value);">
                     <span class="tooltip" title="Space bar to burst particles from the cursor.">(?)</span>
                 </div>
             </div>
@@ -206,7 +206,7 @@
             <div>
                 <div class="container column">
                     Part. system name
-                    <input class="value text" type="text" id="part-system-name" onclick="this.select();" oninput="">
+                    <input class="value text" type="text" id="part-system-name" onclick="this.select();" oninput="psys.psysName = this.value;">
                 </div>
                 <div class="container">
                     Particle depth
@@ -214,9 +214,9 @@
                 </div>
                 <div class="container column">
                     Part. type name
-                    <input class="value text" type="text" id="part-type-name" onclick="this.select();" oninput="">
+                    <input class="value text" type="text" id="part-type-name" onclick="this.select();" oninput="psys.ptypName = this.value;">
                 </div>
-                <div class="container button" onclick="alert('not yet')";>
+                <div class="container button" onclick="download(psys.ptypName+'.txt', psys.export())";>
                     Export code
                 </div>
             </div>
