@@ -125,6 +125,9 @@ function updateUI(full) {
         $ ('#orientation-wiggle')[0].value = psys.orientation.wiggle;
         $ ('#fps')[0].value = psys.fps;
         $ ('#burst-particles')[0].value = psys.burstParticles;
+        $ ('#part-system-name')[0].value = psys.psysName;
+        $ ('#depth')[0].value = psys.depth;
+        $ ('#part-type-name')[0].value = psys.ptypName;
     }
 }
 

@@ -4,14 +4,14 @@
 }
 
 :root {
-    --control-color: hsla(0, 0%, 85%, 0.9);
-    --control-highlight-color: hsla(0, 0%, 95%, 0.9);
+    --control-color: hsla(0, 0%, 85%, 0.8);
+    --control-highlight-color: hsla(0, 0%, 95%, 0.8);
 
-    --radial-color: hsla(0, 0%, 75%, 0.9);
-    --radial-pressed-color: hsla(0, 0%, 65%, 0.9);
-    --radial-pressed-shadow-color: hsla(0, 0%, 55%, 0.9);
-    --radial-hover-color: hsla(0, 0%, 60%, 0.9);
-    --radial-hover-shadow-color: hsla(0, 0%, 50%, 0.9);
+    --radial-color: hsla(0, 0%, 75%, 1);
+    --radial-pressed-color: hsla(0, 0%, 65%, 1);
+    --radial-pressed-shadow-color: hsla(0, 0%, 55%, 1);
+    --radial-hover-color: hsla(0, 0%, 60%, 1);
+    --radial-hover-shadow-color: hsla(0, 0%, 50%, 1);
 }
 
 body {
@@ -39,7 +39,7 @@ body {
 }
 
 .container {
-    margin: 16px;
+    margin: 12px;
     padding: 0 16px;
     min-height: 40px;
 
@@ -139,7 +139,7 @@ body {
 }
 
 .value {
-    width: 36px;
+    width: 48px;
     height: 24px;
     margin: 4px;
 
@@ -148,6 +148,10 @@ body {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
+}
+
+.value.text {
+    width: 160px;
 }
 
 .switch {
@@ -189,8 +193,11 @@ body {
 
 .export {
     position: absolute;
-    right: 16px;
-    top: 16px;
+    height: 100%;
+    right: 0;
+
+    display: flex;
+    flex-flow: column wrap;
 }
 
 

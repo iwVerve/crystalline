@@ -203,7 +203,23 @@
         </div>
 
         <div class="export">
-            
+            <div>
+                <div class="container column">
+                    Part. system name
+                    <input class="value text" type="text" id="part-system-name" onclick="this.select();" oninput="">
+                </div>
+                <div class="container">
+                    Particle depth
+                    <input class="value" type="text" id="depth" onclick="this.select();" oninput="psys.depth = Number(this.value);" onfocusout="this.value = Number(this.value);">
+                </div>
+                <div class="container column">
+                    Part. type name
+                    <input class="value text" type="text" id="part-type-name" onclick="this.select();" oninput="">
+                </div>
+                <div class="container button" onclick="download(psys.ptypName+'.txt', psys.generate())";>
+                    Export code
+                </div>
+            </div>
         </div>
 
         <div class="thanks">
